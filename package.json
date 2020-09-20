@@ -1,0 +1,19 @@
+{
+  "name": "player-stat-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./code/code.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dmytrenko-Roman/player-stat-bot.git"
+  },
+  "author": "Roman \"Kerrigan\" Reus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dmytrenko-Roman/player-stat-bot/issues"
+  },
+  "homepage": "https://github.com/Dmytrenko-Roman/player-stat-bot#readme"
+}
