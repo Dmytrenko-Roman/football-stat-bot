@@ -4,7 +4,9 @@
   "description": "",
   "main": "./code/code.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./code/*.js",
+    "fix": "eslint ./code/*.js --fix"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/Dmytrenko-Roman/player-stat-bot/issues"
   },
-  "homepage": "https://github.com/Dmytrenko-Roman/player-stat-bot#readme"
+  "homepage": "https://github.com/Dmytrenko-Roman/player-stat-bot#readme",
+  "devDependencies": {
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
+  }
 }
