@@ -1,6 +1,5 @@
 'use strict';
 
-let result = {};
 const fetch = require('node-fetch');
 
 fetch('https://api.football-data.org/v2/competitions/SA/scorers', {
