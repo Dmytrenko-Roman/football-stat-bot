@@ -1,12 +1,11 @@
-const fetch = require('node-fetch');
+'use strict';
 
-const body = { a: 1 };
-const url = "https://1xbet.whoscored.com/Players/119501/Show/Serge-Gnabry";
-
-fetch(url, {
-        method: 'post',
-        body:    JSON.stringify(body),
-        headers: { 'Content-Type': 'application/json' },
-    })
-    .then(res => res.json())
-    .then(json => console.log(json));
+match.ajax({
+    headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
+    url: 'http://api.football-data.org/v2/matches?status='+ LIVE +'',
+    dataType: 'json',
+    type: 'GET',
+  }).done(function(response) {
+    // do something with the response, e.g. isolate the id of a linked resource   
+    console.log(response);
+  });
