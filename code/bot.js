@@ -2,17 +2,22 @@
 
 const TelegramBot = require('node-telegram-bot-api');
 
-const token = 'YOUR_TELEGRAM_BOT_TOKEN';
+const token = process.env.TOKEN;
+const url = process.env.APP_URL || 'https://playerstatbot.herokuapp.com/';
 
-const bot = new TelegramBot(token, { polling: true });
+const bot = new TelegramBot(token, {
+  webHook: {
+    port: process.env.PORT
+  }
+});
+
+bot.setWebHook(`${url}/bot${token}`);
 
 bot.onText(/\/echo (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
   const resp = match[1];
   bot.sendMessage(chatId, resp);
 });
-
-'use strict';
 
 /* const fetch = require('node-fetch');
 
