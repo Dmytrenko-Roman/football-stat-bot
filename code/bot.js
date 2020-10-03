@@ -14,7 +14,6 @@ const bot = new TelegramBot(token, {
 bot.setWebHook(`${url}/bot${token}`);
 
 bot.onText(/\/topscorers/, msg => {
-  const chatId = msg.chat.id;
   fetch('https://api.football-data.org/v2/competitions/SA/scorers', {
   headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
   dataType: 'json',
@@ -22,6 +21,7 @@ bot.onText(/\/topscorers/, msg => {
   })
     .then(res => res.json())
     .then(json => {
+      const chatId = msg.chat.id;
       name = json.scorers[0].player.name;
       goals = json.scorers[0].numberOfGoals;
       bot.sendMessage(chatId, `${name}: ${goals}`);
