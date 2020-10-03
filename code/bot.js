@@ -15,7 +15,7 @@ bot.setWebHook(`${url}/bot${token}`);
 
 bot.onText(/\/topscorers/, msg => {
   const chatId = msg.chat.id;
-  /* fetch('https://api.football-data.org/v2/competitions/SA/scorers', {
+  fetch('https://api.football-data.org/v2/competitions/SA/scorers', {
   headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
   dataType: 'json',
   type: 'GET',
@@ -24,7 +24,6 @@ bot.onText(/\/topscorers/, msg => {
     .then(json => {
       name = json.scorers[0].player.name;
       goals = json.scorers[0].numberOfGoals;
-      bot.sendMessage(chatId, `${name}: ${goals}`);
-    });*/
-  bot.sendMessage(chatId, 'Hello!');
+      bot.sendMessage(chatId, 'Hello!'); //`${name}: ${goals}`);
+    });
 });
