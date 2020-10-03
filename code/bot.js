@@ -1,5 +1,6 @@
 'use strict';
 
+const fetch = require('node-fetch');
 const TelegramBot = require('node-telegram-bot-api');
 
 const token = process.env.TOKEN;
@@ -24,6 +25,6 @@ bot.onText(/\/topscorers/, msg => {
     .then(json => {
       name = json.scorers[0].player.name;
       goals = json.scorers[0].numberOfGoals;
-      bot.sendMessage(chatId, 'Hello!'); //`${name}: ${goals}`);
+      bot.sendMessage(chatId, `${name}: ${goals}`);
     });
 });
