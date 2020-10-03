@@ -23,8 +23,8 @@ bot.onText(/\/topscorers/, msg => {
   })
     .then(res => res.json())
     .then(json => {
-      name = json.scorers[0].player.name;
-      goals = json.scorers[0].numberOfGoals;
+      const name = json.scorers[0].player.name;
+      const goals = json.scorers[0].numberOfGoals;
       bot.sendMessage(chatId, `${name}: ${goals}`);
     });
 });
