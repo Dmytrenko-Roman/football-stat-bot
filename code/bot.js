@@ -2,7 +2,7 @@
 
 // Bot settings:
 
-//const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
 const TelegramBot = require('node-telegram-bot-api');
 
 const token = process.env.TOKEN;
@@ -36,11 +36,11 @@ const kb = {
   ]
 }
 
-bot.on('message', msg => {
+/*bot.on('message', msg => {
   switch (msg.text) {
 
   }
-})
+}) */
 
 bot.onText(/\/topscorers/, msg => {
   const chatId = msg.chat.id;
