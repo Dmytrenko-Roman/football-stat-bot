@@ -36,15 +36,17 @@ const kb = {
   ]
 }
 
-/*bot.on('message', msg => {
+bot.on('message', msg => {
+  console.log('Working', msg.from.first_name);
   switch (msg.text) {
 
   }
-}) */
+})
 
 bot.onText(/\/topscorers/, msg => {
+  const text = `Hello, ${msg.from.first_name}`;
   const chatId = msg.chat.id;
-  bot.sendMessage(chatId, {
+  bot.sendMessage(chatId, text, {
     reply_markup: {
       keyboard: kb.leagues,
     }
