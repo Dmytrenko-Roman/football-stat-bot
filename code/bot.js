@@ -40,7 +40,7 @@ bot.on('message', msg => {
   const chatId = msg.chat.id;
   console.log('Working', msg.from.first_name);
   switch (msg.text) {
-    case kb.leagues.buttons.leagues.epl:
+    case kb.leagues[0][0]:
       bot.sendMessage(chatId, "You chose EPL");
       break;
   }
