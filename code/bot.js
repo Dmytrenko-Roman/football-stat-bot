@@ -65,7 +65,8 @@ bot.on('message', msg => {
           7. ${names[6]}: ${goals[6]}
           8. ${names[7]}: ${goals[7]}
           9. ${names[8]}: ${goals[8]}
-          10. ${names[9]}: ${goals[9]}`);
+          10. ${names[9]}: ${goals[9]}`
+          );
       });
     break;
   }
