@@ -40,7 +40,7 @@ bot.on('message', msg => {
   const chatId = msg.chat.id;
   console.log('Working', msg.from.first_name);
   switch (msg.text) {
-    case kb.leagues[0][0]:
+    case kb.leagues[1][0]:
       fetch('https://api.football-data.org/v2/competitions/SA/scorers', {
         headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
         dataType: 'json',
@@ -55,7 +55,7 @@ bot.on('message', msg => {
             names[i] = info[i].player.name;
             goals[i] = info[i].numberOfGoals;
           }
-          bot.sendMessage(chatId,
+          const text = 
           `1. ${names[0]}: ${goals[0]}
           2. ${names[1]}: ${goals[1]}
           3. ${names[2]}: ${goals[2]}
@@ -66,7 +66,7 @@ bot.on('message', msg => {
           8. ${names[7]}: ${goals[7]}
           9. ${names[8]}: ${goals[8]}
           10. ${names[9]}: ${goals[9]}`
-          );
+          bot.sendMessage(chatId, text);
       });
     break;
   }
