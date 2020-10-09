@@ -56,15 +56,15 @@ bot.on('message', msg => {
             goals[i] = info[i].numberOfGoals;
           }
           const text = 
-          `1. ${names[0]}: ${goals[0]}
-          2. ${names[1]}: ${goals[1]}
-          3. ${names[2]}: ${goals[2]}
-          4. ${names[3]}: ${goals[3]}
-          5. ${names[4]}: ${goals[4]}
-          6. ${names[5]}: ${goals[5]}
-          7. ${names[6]}: ${goals[6]}
-          8. ${names[7]}: ${goals[7]}
-          9. ${names[8]}: ${goals[8]}
+          `1. ${names[0]}: ${goals[0]}\n
+          2. ${names[1]}: ${goals[1]}\n
+          3. ${names[2]}: ${goals[2]}\n
+          4. ${names[3]}: ${goals[3]}\n
+          5. ${names[4]}: ${goals[4]}\n
+          6. ${names[5]}: ${goals[5]}\n
+          7. ${names[6]}: ${goals[6]}\n
+          8. ${names[7]}: ${goals[7]}\n
+          9. ${names[8]}: ${goals[8]}\n
           10. ${names[9]}: ${goals[9]}`
           bot.sendMessage(chatId, text);
       });
