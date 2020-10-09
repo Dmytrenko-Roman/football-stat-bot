@@ -49,11 +49,23 @@ bot.on('message', msg => {
         .then(res => res.json())
         .then(json => {
           const info = json.scorers;
+          const names = [];
+          const goals = [];
           for (let i = 0; i < info.length; i++) {
-            let name = info[i].player.name;
-            let goals = info[i].numberOfGoals;
-            bot.sendMessage(chatId, `${name}: ${goals}`);
+            names[i] = info[i].player.name;
+            goals[i] = info[i].numberOfGoals;
           }
+          bot.sendMessage(chatId,
+          `1. ${names[0]}: ${goals[0]}
+          2. ${names[1]}: ${goals[1]}
+          3. ${names[2]}: ${goals[2]}
+          4. ${names[3]}: ${goals[3]}
+          5. ${names[4]}: ${goals[4]}
+          6. ${names[5]}: ${goals[5]}
+          7. ${names[6]}: ${goals[6]}
+          8. ${names[7]}: ${goals[7]}
+          9. ${names[8]}: ${goals[8]}
+          10. ${names[9]}: ${goals[9]}`);
       });
     break;
   }
@@ -68,16 +80,3 @@ bot.onText(/\/topscorers/, msg => {
     }
   });
 });
-
-
-/* fetch('https://api.football-data.org/v2/competitions/SA/scorers', {
-  headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
-  dataType: 'json',
-  type: 'GET',
-  })
-    .then(res => res.json())
-    .then(json => {
-      const name = json.scorers[0].player.name;
-      const goals = json.scorers[0].numberOfGoals;
-      bot.sendMessage(chatId, `${name}: ${goals}`);
-    }); */
