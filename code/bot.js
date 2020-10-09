@@ -2,7 +2,7 @@
 
 // Bot settings:
 
-// const fetch = require('node-fetch');
+const fetch = require('node-fetch');
 const TelegramBot = require('node-telegram-bot-api');
 
 const token = process.env.TOKEN;
@@ -24,9 +24,9 @@ const buttons = {
     bundes: 'BUNDESLIGA',
     seriea: 'SERIE A',
     ligue1: 'LIGUE 1',
-    laliga: 'LA LIGA',  
+    laliga: 'LA LIGA',
   }
-}
+};
 
 const kb = {
   leagues: [
@@ -34,17 +34,30 @@ const kb = {
     [buttons.leagues.seriea, buttons.leagues.ligue1],
     [buttons.leagues.laliga]
   ]
-}
+};
 
 bot.on('message', msg => {
   const chatId = msg.chat.id;
   console.log('Working', msg.from.first_name);
   switch (msg.text) {
     case kb.leagues[0][0]:
-      bot.sendMessage(chatId, "You chose EPL");
-      break;
+      fetch('https://api.football-data.org/v2/competitions/SA/scorers', {
+        headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
+        dataType: 'json',
+        type: 'GET',
+      })
+        .then(res => res.json())
+        .then(json => {
+          const info = json.scorers;
+          for (let i = 0; i < info.length; i++) {
+            let name = info[i].player.name;
+            let goals = info[i].numberOfGoals;
+            bot.sendMessage(chatId, `${name}: ${goals}`);
+          }
+      });
+    break;
   }
-})
+});
 
 bot.onText(/\/topscorers/, msg => {
   const text = `Hello, ${msg.from.first_name}`;
@@ -53,7 +66,7 @@ bot.onText(/\/topscorers/, msg => {
     reply_markup: {
       keyboard: kb.leagues,
     }
-  })
+  });
 });
 
 
