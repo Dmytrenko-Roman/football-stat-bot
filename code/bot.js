@@ -22,15 +22,6 @@ bot.setWebHook(`${url}/bot${token}`);
 
 let topscorers = false;
 
-const kb = {
-  leagues: [
-    ['PL', 'BL1'],
-    ['SA', 'FL1'],
-    ['PD', 'CL']
-  ]
-};
-
-
 bot.on('message', msg => {
   const chatId = msg.chat.id;
   if (topscorers) {
@@ -60,9 +51,5 @@ bot.onText(/\/topscorers/, msg => {
   topscorers = true;
   const text = 'Choose a league:';
   const chatId = msg.chat.id;
-  bot.sendMessage(chatId, text, {
-    reply_markup: {
-      keyboard: kb.leagues,
-    }
-  });
+  bot.sendMessage(chatId, text);
 });
