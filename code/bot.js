@@ -5,27 +5,30 @@
 const fetch = require('node-fetch');
 const TelegramBot = require('node-telegram-bot-api');
 
-const token = process.env.TOKEN;
+const token = '?';
 const url = process.env.APP_URL || 'https://playerstatbot.herokuapp.com/';
 
-// const bot = new TelegramBot(token, { polling: true });
+const bot = new TelegramBot(token, { polling: true });
 
-const bot = new TelegramBot(token, {
+const names = [];
+const goals = [];
+let t;
+
+/*const bot = new TelegramBot(token, {
   webHook: {
     port: process.env.PORT
   }
 });
 
-bot.setWebHook(`${url}/bot${token}`);
+bot.setWebHook(`${url}/bot${token}`); */
 
 // Bot functionality:
 
-let topscorers = false;
-
 bot.on('message', msg => {
   const chatId = msg.chat.id;
-  if (topscorers) {
-    fetch(`https://api.football-data.org/v2/competitions/${msg.text}/scorers`, {
+  if (msg.text.substr(0, 11) === '\/topscorers') {
+    const t = msg.text.substr(12);
+    fetch(`https://api.football-data.org/v2/competitions/${t}/scorers`, {
       headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
       dataType: 'json',
       type: 'GET',
@@ -33,8 +36,6 @@ bot.on('message', msg => {
       .then(res => res.json())
       .then(json => {
         const info = json.scorers;
-        const names = [];
-        const goals = [];
         for (let i = 0; i < info.length; i++) {
           names[i] = info[i].player.name;
           goals[i] = info[i].numberOfGoals;
@@ -43,13 +44,4 @@ bot.on('message', msg => {
         bot.sendMessage(chatId, text);
       });
   }
-});
-
-
-
-bot.onText(/\/topscorers/, msg => {
-  topscorers = true;
-  const text = 'Choose a league:';
-  const chatId = msg.chat.id;
-  bot.sendMessage(chatId, text);
 });
