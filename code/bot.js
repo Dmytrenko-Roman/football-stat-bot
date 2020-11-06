@@ -5,29 +5,42 @@
 const fetch = require('node-fetch');
 const TelegramBot = require('node-telegram-bot-api');
 
-const token = '?';
+const token = process.env.TOKEN;
 const url = process.env.APP_URL || 'https://playerstatbot.herokuapp.com/';
 
-const bot = new TelegramBot(token, { polling: true });
+//const bot = new TelegramBot(token, { polling: true });
 
-const names = [];
-const goals = [];
-
-/*const bot = new TelegramBot(token, {
+const bot = new TelegramBot(token, {
   webHook: {
     port: process.env.PORT
   }
 });
 
-bot.setWebHook(`${url}/bot${token}`); */
+bot.setWebHook(`${url}/bot${token}`);
+
+const names = [];
+const goals = [];
+
+const leagues = {
+  SA: 'Serie A',
+  PL: 'EPL',
+  BL1: 'Bundesliga',
+  FL1: 'Ligue 1',
+  CL: 'Champions league',
+  PD: 'La Liga'
+};
 
 // Bot functionality:
 
 bot.on('message', msg => {
   const chatId = msg.chat.id;
   if (msg.text.substr(0, 11) === '/topscorers') {
+    let league;
     const t = msg.text.substr(12);
-    fetch(`https://api.football-data.org/v2/competitions/${t}/scorers`, {
+    for (const k in leagues) {
+      if (leagues[k] === t) league = `${k}`;
+    }
+    fetch(`https://api.football-data.org/v2/competitions/${league}/scorers`, {
       headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
       dataType: 'json',
       type: 'GET',
