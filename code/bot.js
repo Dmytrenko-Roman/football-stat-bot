@@ -12,7 +12,6 @@ const bot = new TelegramBot(token, { polling: true });
 
 const names = [];
 const goals = [];
-let t;
 
 /*const bot = new TelegramBot(token, {
   webHook: {
@@ -26,7 +25,7 @@ bot.setWebHook(`${url}/bot${token}`); */
 
 bot.on('message', msg => {
   const chatId = msg.chat.id;
-  if (msg.text.substr(0, 11) === '\/topscorers') {
+  if (msg.text.substr(0, 11) === '/topscorers') {
     const t = msg.text.substr(12);
     fetch(`https://api.football-data.org/v2/competitions/${t}/scorers`, {
       headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
