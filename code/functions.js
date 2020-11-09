@@ -11,4 +11,4 @@ async function TopScorers(league) {
   });
 }
 
-module.exports = TopScorers;
+module.exports = { TopScorers };
