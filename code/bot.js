@@ -45,7 +45,7 @@ bot.on('message', msg => {
     for (const k in leagues) {
       if (leagues[k] === t) league = `${k}`;
     }
-    TS.TopScorers(league)
+    TS(league)
       .then(json => {
         const info = json.scorers;
         for (let i = 0; i < info.length; i++) {
