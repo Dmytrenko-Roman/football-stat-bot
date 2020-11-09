@@ -32,10 +32,6 @@ const leagues = {
   PD: 'La Liga'
 };
 
-// Player's stats:
-
-const playername;
-
 // Bot functionality:
 
 bot.on('message', msg => {
