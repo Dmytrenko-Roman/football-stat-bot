@@ -18,9 +18,10 @@ const bot = new TelegramBot(token, {
 
 bot.setWebHook(`${url}/bot${token}`);
 
+// Top scorers;
+
 const names = [];
 const goals = [];
-
 const leagues = {
   SA: 'Serie A',
   PL: 'EPL',
@@ -30,10 +31,17 @@ const leagues = {
   PD: 'La Liga'
 };
 
+// Player's stats:
+
+const playername;
+
 // Bot functionality:
 
 bot.on('message', msg => {
   const chatId = msg.chat.id;
+
+  // Top scorers:
+
   if (msg.text.substr(0, 11) === '/topscorers') {
     let league;
     const t = msg.text.substr(12);
@@ -56,4 +64,6 @@ bot.on('message', msg => {
         bot.sendMessage(chatId, text);
       });
   }
+
+  // Player's stats:
 });

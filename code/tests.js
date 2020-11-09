@@ -3,7 +3,7 @@
 const assert = require('assert').strict;
 
 {
-  const fn = require('./code.js');
+  const fn = require('./code/bot.js');
 
   const tests = [
   ];
