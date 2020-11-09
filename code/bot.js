@@ -4,6 +4,7 @@
 
 const fetch = require('node-fetch');
 const TelegramBot = require('node-telegram-bot-api');
+const TS = require('./code/functions.js')
 
 const token = process.env.TOKEN;
 const url = process.env.APP_URL || 'https://playerstatbot.herokuapp.com/';
@@ -48,12 +49,7 @@ bot.on('message', msg => {
     for (const k in leagues) {
       if (leagues[k] === t) league = `${k}`;
     }
-    fetch(`https://api.football-data.org/v2/competitions/${league}/scorers`, {
-      headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
-      dataType: 'json',
-      type: 'GET',
-    })
-      .then(res => res.json())
+    TS(league)
       .then(json => {
         const info = json.scorers;
         for (let i = 0; i < info.length; i++) {
