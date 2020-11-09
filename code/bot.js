@@ -4,7 +4,7 @@
 
 const fetch = require('node-fetch');
 const TelegramBot = require('node-telegram-bot-api');
-const TS = require('./code/functions.js')
+const TS = require('./functions.js')
 
 const token = process.env.TOKEN;
 const url = process.env.APP_URL || 'https://playerstatbot.herokuapp.com/';
