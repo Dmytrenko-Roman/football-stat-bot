@@ -1,3 +1,5 @@
+![GitHub](https://img.shields.io/github/license/Dmytrenko-Roman/player-stat-bot?style=for-the-badge) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Dmytrenko-Roman/player-stat-bot/Node.js%20CI?style=for-the-badge) ![GitHub last commit](https://img.shields.io/github/last-commit/Dmytrenko-Roman/player-stat-bot?style=for-the-badge) ![GitHub pull requests](https://img.shields.io/github/issues-pr/Dmytrenko-Roman/player-stat-bot?style=for-the-badge)
+
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
