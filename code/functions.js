@@ -9,7 +9,7 @@ async function TopScorers(league) {
     dataType: 'json',
     type: 'GET',
   });
-  return response();
+  response();
 }
 
 module.exports = { TopScorers };
