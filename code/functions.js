@@ -4,6 +4,8 @@ const fetch = require('node-fetch');
 
 
 function TopScorers(league) {
+  const names = [];
+  const goals = [];
   return fetch(`https://api.football-data.org/v2/competitions/${league}/scorers`, {
     headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
     dataType: 'json',

@@ -21,8 +21,6 @@ bot.setWebHook(`${url}/bot${token}`);
 
 // Top scorers;
 
-const names = [];
-const goals = [];
 const leagues = {
   SA: 'Serie A',
   PL: 'EPL',
