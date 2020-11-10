@@ -9,7 +9,7 @@ function TopScorers(league) {
     dataType: 'json',
     type: 'GET',
   })
-    .then(response => response.json())
+    .then(response => response.json());
 }
 
-module.exports = TopScorers;
+//module.exports = TopScorers;
