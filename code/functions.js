@@ -9,6 +9,7 @@ async function TopScorers(league) {
     dataType: 'json',
     type: 'GET',
   });
+  return response();
 }
 
 module.exports = { TopScorers };

@@ -2,7 +2,7 @@
 
 // Bot settings:
 
-const fetch = require('node-fetch');
+//const fetch = require('node-fetch');
 const TelegramBot = require('node-telegram-bot-api');
 const TS = require('./functions.js')
 
