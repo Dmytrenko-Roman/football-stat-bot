@@ -3,8 +3,8 @@
 const fetch = require('node-fetch');
 
 
-async function TopScorers(league) {
-  await fetch(`https://api.football-data.org/v2/competitions/${league}/scorers`, {
+function TopScorers(league) {
+  fetch(`https://api.football-data.org/v2/competitions/${league}/scorers`, {
     headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
     dataType: 'json',
     type: 'GET',
