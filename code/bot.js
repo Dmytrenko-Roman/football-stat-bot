@@ -43,7 +43,7 @@ bot.on('message', msg => {
     for (const k in leagues) {
       if (leagues[k] === t) league = `${k}`;
     }
-    topScorers(league);
+    topScorers(league, bot.sendMessage(chatId));
   }
 
   // Player's stats:
