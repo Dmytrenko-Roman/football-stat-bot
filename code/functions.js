@@ -12,4 +12,4 @@ async function TopScorers(league) {
   response();
 }
 
-module.exports = { TopScorers };
+module.exports = TopScorers;
