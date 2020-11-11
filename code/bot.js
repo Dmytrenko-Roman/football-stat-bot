@@ -69,7 +69,7 @@ bot.on('message', msg => {
       for (let k = 0; k < table.length; k++) {
         arr.push(`${table[k].position}. ${table[k].team.name} |W:${table[k].won}|D:${table[k].draw}|L:${table[k].lost}|`);
       }
-      if (arr.length === 20) {
+      if (arr.length === 19) {
         bot.sendMessage(chatId, `${arr[0]}\n${arr[1]}\n${arr[2]}\n${arr[3]}\n${arr[4]}\n${arr[5]}\n${arr[6]}\n${arr[7]}\n${arr[8]}\n${arr[9]}\n${arr[10]}\n${arr[11]}\n${arr[12]}\n${arr[13]}\n${arr[14]}\n${arr[15]}\n${arr[16]}\n${arr[17]}\n${arr[18]}\n${arr[19]}\n`)
       } else {
         bot.sendMessage(chatId, 'Not 20');
