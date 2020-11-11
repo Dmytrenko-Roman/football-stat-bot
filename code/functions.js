@@ -20,18 +20,6 @@ function TeamPositions(league) {
     .then(response => response.json());
 }
 
-const leagues = {
-  SA: 'Serie A',
-  PL: 'EPL',
-  BL1: 'Bundesliga',
-  FL1: 'Ligue 1',
-  CL: 'Champions league',
-  PD: 'La Liga'
-};
-
-const positions = '/positions';
-const text = '/positions Bundesliga';
-
 function CheckLeague(leagues, text, command) {
     let league;
     const t = text.substr(command.length + 1);
@@ -40,9 +28,5 @@ function CheckLeague(leagues, text, command) {
     }
     return league;
 }
-
-console.log(CheckLeague(leagues, text, positions));
-//console.log(TopScorers('SA'));
-
 
 module.exports = { TopScorers, TeamPositions, CheckLeague };
