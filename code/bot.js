@@ -4,7 +4,7 @@
 
 //const fetch = require('node-fetch');
 const TelegramBot = require('node-telegram-bot-api');
-const topScorers = require('./functions.js');
+const funcs = require('./functions.js');
 
 const token = process.env.TOKEN;
 const url = process.env.APP_URL || 'https://playerstatbot.herokuapp.com/';
@@ -18,6 +18,12 @@ const bot = new TelegramBot(token, {
 });
 
 bot.setWebHook(`${url}/bot${token}`);
+
+// Commands:
+const commands = {
+  ts: '/topscorers',
+  ps: '/positions',
+}
 
 // Top scorers:
 
@@ -36,16 +42,11 @@ const leagues = {
 
 bot.on('message', msg => {
   const chatId = msg.chat.id;
+  const msgt = msg.text;
 
-  // Top scorers:
-
-  if (msg.text.substr(0, 11) === '/topscorers') {
-    let league;
-    const t = msg.text.substr(12);
-    for (const k in leagues) {
-      if (leagues[k] === t) league = `${k}`;
-    }
-    topScorers(league)
+  if (msgt.substr(0, ts.length) === commands.ts) {
+    const a = funcs.CheckLeague(leagues, msgt);
+    funcs.TopScorers(a)
       .then(json => {
         const info = json.scorers;
         for (let i = 0; i < info.length; i++) {
@@ -57,5 +58,16 @@ bot.on('message', msg => {
       });
   }
 
-  // Player's stats:
+  // Teams positions:
+
+  if (msgt.substr(0, ps.length) === commands.ps) {
+    const b = funcs.CheckLeague(leagues, msgt);
+    funcs.TeamPositions(b)
+    .then(json => {
+      const table = json.standings[0].table;
+      for (let k = 0; k < table.length; k++) {
+        bot.sendMessage(chatId, `${table[k].position}. ${table[k].team.name} |W:${table[k].won}|D:${table[k].draw}|L:${table[k].lost}|`)
+      }
+    });
+  }
 });
