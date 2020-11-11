@@ -21,12 +21,12 @@ function TeamPositions(league) {
 }
 
 function CheckLeague(leagues, text, command) {
-    let league;
-    const t = text.substr(command.length + 1);
-    for (const k in leagues) {
-      if (leagues[k] === t) league = `${k}`;
-    }
-    return league;
+  let league;
+  const t = text.substr(command.length + 1);
+  for (const k in leagues) {
+    if (leagues[k] === t) league = `${k}`;
+  }
+  return league;
 }
 
 module.exports = { TopScorers, TeamPositions, CheckLeague };
