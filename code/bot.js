@@ -44,7 +44,7 @@ bot.on('message', msg => {
   const chatId = msg.chat.id;
   const msgt = msg.text;
 
-  if (msgt.substr(0, ts.length) === commands.ts) {
+  if (msgt.substr(0, commands.ts.length) === commands.ts) {
     const a = funcs.CheckLeague(leagues, msgt);
     funcs.TopScorers(a)
       .then(json => {
@@ -60,7 +60,7 @@ bot.on('message', msg => {
 
   // Teams positions:
 
-  if (msgt.substr(0, ps.length) === commands.ps) {
+  if (msgt.substr(0, commands.ps.length) === commands.ps) {
     const b = funcs.CheckLeague(leagues, msgt);
     funcs.TeamPositions(b)
     .then(json => {
