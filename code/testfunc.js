@@ -9,8 +9,11 @@ fetch(`https://api.football-data.org/v2/competitions/PL/standings`, {
   })
     .then(response => response.json())
     .then(json => {
+      let array = []
       const table = json.standings[0].table;
       for (let k = 0; k < table.length; k++) {
         console.log(`${table[k].position}. ${table[k].team.name} |W:${table[k].won}|D:${table[k].draw}|L:${table[k].lost}|`)
+        array.push(k);
       }
+      console.log(array.length);
     });
