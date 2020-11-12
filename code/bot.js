@@ -2,7 +2,6 @@
 
 // Bot settings:
 
-//const fetch = require('node-fetch');
 const TelegramBot = require('node-telegram-bot-api');
 const funcs = require('./functions.js');
 
@@ -44,6 +43,8 @@ const leagues = {
 bot.on('message', msg => {
   const chatId = msg.chat.id;
   const msgt = msg.text;
+
+  // Top scorers:
 
   if (msgt.substr(0, commands.top.length) === commands.top) {
     const a = funcs.CheckLeague(leagues, msgt, commands.top);
