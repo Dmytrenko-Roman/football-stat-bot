@@ -20,9 +20,10 @@ const bot = new TelegramBot(token, {
 bot.setWebHook(`${url}/bot${token}`);
 
 // Commands:
+
 const commands = {
-  ts: '/topscorers',
-  ps: '/positions',
+  top: '/topscorers',
+  pos: '/positions',
 };
 
 // Top scorers:
@@ -44,8 +45,8 @@ bot.on('message', msg => {
   const chatId = msg.chat.id;
   const msgt = msg.text;
 
-  if (msgt.substr(0, commands.ts.length) === commands.ts) {
-    const a = funcs.CheckLeague(leagues, msgt, commands.ts);
+  if (msgt.substr(0, commands.top.length) === commands.top) {
+    const a = funcs.CheckLeague(leagues, msgt, commands.top);
     funcs.TopScorers(a)
       .then(json => {
         const info = json.scorers;
@@ -60,8 +61,8 @@ bot.on('message', msg => {
 
   // Teams positions:
 
-  if (msgt.substr(0, commands.ps.length) === commands.ps) {
-    const b = funcs.CheckLeague(leagues, msgt, commands.ps);
+  if (msgt.substr(0, commands.pos.length) === commands.pos) {
+    const b = funcs.CheckLeague(leagues, msgt, commands.pos);
     const arr = [];
     funcs.TeamPositions(b)
       .then(json => {
