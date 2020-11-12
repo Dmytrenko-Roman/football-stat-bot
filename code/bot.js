@@ -38,6 +38,10 @@ const leagues = {
   PD: 'La Liga'
 };
 
+// Table:
+
+const table = [];
+
 // Bot functionality:
 
 bot.on('message', msg => {
@@ -47,8 +51,8 @@ bot.on('message', msg => {
   // Top scorers:
 
   if (msgt.substr(0, commands.top.length) === commands.top) {
-    const a = funcs.CheckLeague(leagues, msgt, commands.top);
-    funcs.TopScorers(a)
+    const league = funcs.CheckLeague(leagues, msgt, commands.top);
+    funcs.TopScorers(league)
       .then(json => {
         const info = json.scorers;
         for (let i = 0; i < info.length; i++) {
@@ -63,16 +67,15 @@ bot.on('message', msg => {
   // Teams positions:
 
   if (msgt.substr(0, commands.pos.length) === commands.pos) {
-    const b = funcs.CheckLeague(leagues, msgt, commands.pos);
-    const arr = [];
-    funcs.TeamPositions(b)
+    const league = funcs.CheckLeague(leagues, msgt, commands.pos);
+    funcs.Table(league)
       .then(json => {
-        const table = json.standings[0].table;
-        for (let k = 0; k < table.length; k++) {
-          arr.push(`${table[k].position}. ${table[k].team.name} |W:${table[k].won}|D:${table[k].draw}|L:${table[k].lost}|`);
+        const tablejson = json.standings[0].table;
+        for (let k = 0; k < tablejson.length; k++) {
+          table.push(`${table[k].position}. ${table[k].team.name} |W:${table[k].won}|D:${table[k].draw}|L:${table[k].lost}|`);
         }
-        if (arr.length === 20) {
-          bot.sendMessage(chatId, `${arr[0]}\n${arr[1]}\n${arr[2]}\n${arr[3]}\n${arr[4]}\n${arr[5]}\n${arr[6]}\n${arr[7]}\n${arr[8]}\n${arr[9]}\n${arr[10]}\n${arr[11]}\n${arr[12]}\n${arr[13]}\n${arr[14]}\n${arr[15]}\n${arr[16]}\n${arr[17]}\n${arr[18]}\n${arr[19]}\n`);
+        if (table.length === 20) {
+          bot.sendMessage(chatId, `${table[0]}\n${table[1]}\n${table[2]}\n${table[3]}\n${table[4]}\n${table[5]}\n${table[6]}\n${table[7]}\n${table[8]}\n${table[9]}\n${table[10]}\n${table[11]}\n${table[12]}\n${table[13]}\n${table[14]}\n${table[15]}\n${table[16]}\n${table[17]}\n${table[18]}\n${table[19]}\n`);
         } else {
           bot.sendMessage(chatId, 'Not 20');
         }

@@ -11,7 +11,7 @@ function TopScorers(league) {
     .then(response => response.json());
 }
 
-function TeamPositions(league) {
+function Table(league) {
   return fetch(`https://api.football-data.org/v2/competitions/${league}/standings`, {
     headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
     dataType: 'json',
@@ -29,4 +29,4 @@ function CheckLeague(leagues, text, command) {
   return league;
 }
 
-module.exports = { TopScorers, TeamPositions, CheckLeague };
+module.exports = { TopScorers, Table, CheckLeague };
