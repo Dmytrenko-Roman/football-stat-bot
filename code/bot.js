@@ -74,11 +74,8 @@ bot.on('message', msg => {
         for (let k = 0; k < tablejson.length; k++) {
           table.push(`${table[k].position}. ${table[k].team.name} |W:${table[k].won}|D:${table[k].draw}|L:${table[k].lost}|`);
         }
-        if (table.length === 20) {
-          bot.sendMessage(chatId, `${table[0]}\n${table[1]}\n${table[2]}\n${table[3]}\n${table[4]}\n${table[5]}\n${table[6]}\n${table[7]}\n${table[8]}\n${table[9]}\n${table[10]}\n${table[11]}\n${table[12]}\n${table[13]}\n${table[14]}\n${table[15]}\n${table[16]}\n${table[17]}\n${table[18]}\n${table[19]}\n`);
-        } else {
-          bot.sendMessage(chatId, 'Not 20');
-        }
+        const text = `${table[0]}\n${table[1]}\n${table[2]}\n${table[3]}\n${table[4]}\n${table[5]}\n${table[6]}\n${table[7]}\n${table[8]}\n${table[9]}\n${table[10]}\n${table[11]}\n${table[12]}\n${table[13]}\n${table[14]}\n${table[15]}\n${table[16]}\n${table[17]}\n${table[18]}\n${table[19]}\n`
+        bot.sendMessage(chatId, text);
       });
   }
 });
