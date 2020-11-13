@@ -16,6 +16,16 @@ const assert = require('assert').strict;
 
   const tests = [
     [leagues, '/positions La Liga', '/positions', 'PD', 'Positions: La Liga'],
+    [leagues, '/positions Bundesliga', '/positions', 'BL1', 'Positions: Bundesliga'],
+    [leagues, '/positions Serie A', '/positions', 'SA', 'Positions: Serie A'],
+    [leagues, '/positions Ligue 1', '/positions', 'FL1', 'Positions: Ligue 1'],
+    [leagues, '/positions EPL', '/positions', 'PL', 'Positions: EPL'],
+    [leagues, '/topscorers La Liga', '/topscorers', 'PD', 'Topscorers: La Liga'],
+    [leagues, '/topscorers Bundesliga', '/topscorers', 'BL1', 'Topscorers: Bundesliga'],
+    [leagues, '/topscorers Serie A', '/topscorers', 'SA', 'Topscorers: Serie A'],
+    [leagues, '/topscorers Ligue 1', '/topscorers', 'FL1', 'Topscorers: Ligue 1'],
+    [leagues, '/topscorers Champions league', '/topscorers', 'CL', 'Topscorers: Champions league'],
+    [leagues, '/topscorers EPL', '/topscorers', 'PL', 'Topscorers: EPL'],
   ];
 
   const obj = {
