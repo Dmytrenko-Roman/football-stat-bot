@@ -25,10 +25,6 @@ const commands = {
   pos: '/positions',
 };
 
-// Top scorers:
-
-//const names = [];
-//const goals = [];
 const leagues = {
   SA: 'Serie A',
   PL: 'EPL',
@@ -37,10 +33,6 @@ const leagues = {
   CL: 'Champions league',
   PD: 'La Liga'
 };
-
-// Table:
-
-const table = [];
 
 // Bot functionality:
 
@@ -59,7 +51,6 @@ bot.on('message', msg => {
         for (let i = 0; i < info.length; i++) {
           text += `${i + 1}. ${info[i].player.name}: ${info[i].numberOfGoals}\n`;
         }
-        //const text = `1. ${names[0]}: ${goals[0]}\n2. ${names[1]}: ${goals[1]}\n3. ${names[2]}: ${goals[2]}\n4. ${names[3]}: ${goals[3]}\n5. ${names[4]}: ${goals[4]}\n6. ${names[5]}: ${goals[5]}\n7. ${names[6]}: ${goals[6]}\n8. ${names[7]}: ${goals[7]}\n9. ${names[8]}: ${goals[8]}\n10. ${names[9]}: ${goals[9]}`;
         bot.sendMessage(chatId, text);
       });
   }
@@ -68,13 +59,13 @@ bot.on('message', msg => {
 
   if (msgt.substr(0, commands.pos.length) === commands.pos) {
     const league = funcs.CheckLeague(leagues, msgt, commands.pos);
+    let text;
     funcs.Table(league)
       .then(json => {
         const tablejson = json.standings[0].table;
         for (let k = 0; k < tablejson.length; k++) {
-          table.push(`${table[k].position}. ${table[k].team.name} |W:${table[k].won}|D:${table[k].draw}|L:${table[k].lost}|`);
+          text += `${tablejson[k].position}. ${tablejson[k].team.name} |W:${tablejson[k].won}|D:${tablejson[k].draw}|L:${tablejson[k].lost}|\n`;
         }
-        const text = `${table[0]}\n${table[1]}\n${table[2]}\n${table[3]}\n${table[4]}\n${table[5]}\n${table[6]}\n${table[7]}\n${table[8]}\n${table[9]}\n${table[10]}\n${table[11]}\n${table[12]}\n${table[13]}\n${table[14]}\n${table[15]}\n${table[16]}\n${table[17]}\n${table[18]}\n${table[19]}\n`;
         bot.sendMessage(chatId, text);
       });
   }
