@@ -4,7 +4,7 @@
   "description": "",
   "main": "./code/code.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node ./code/tests.js",
     "lint": "eslint ./code/*.js",
     "fix": "eslint ./code/*.js --fix"
   },
