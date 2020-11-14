@@ -45,14 +45,12 @@ bot.on('message', msg => {
   if (msgt.substr(0, commands.top.length) === commands.top) {
     const league = funcs.CheckLeague(leagues, msgt, commands.top);
     let text = '';
-    funcs.TopScorers(league)
-      .then(json => {
-        const info = json.scorers;
-        for (let i = 0; i < info.length; i++) {
-          text += `${i + 1}. ${info[i].player.name}: ${info[i].numberOfGoals}\n`;
-        }
-        bot.sendMessage(chatId, text);
-      });
+    const json = funcs.TopScorers(league);
+    const info = json.scorers;
+    for (let i = 0; i < info.length; i++) {
+      text += `${i + 1}. ${info[i].player.name}: ${info[i].numberOfGoals}\n`;
+    }
+    bot.sendMessage(chatId, text);
   }
 
   // Teams positions:
