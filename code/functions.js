@@ -3,16 +3,15 @@
 const fetch = require('node-fetch');
 
 async function TopScorers(league) {
-  const response = await fetch(`https://api.football-data.org/v2/competitions/${league}/scorers`, {
+  return fetch(`https://api.football-data.org/v2/competitions/${league}/scorers`, {
     headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
     dataType: 'json',
     type: 'GET',
   })
-  const json = await response.json();
-  return json;
+    .then(response => response.json());
 }
 
-function Table(league) {
+async function Table(league) {
   return fetch(`https://api.football-data.org/v2/competitions/${league}/standings`, {
     headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
     dataType: 'json',
@@ -29,5 +28,7 @@ function CheckLeague(leagues, text, command) {
   }
   return league;
 }
+
+console.log(TopScorers('PL'));
 
 module.exports = { TopScorers, Table, CheckLeague };
