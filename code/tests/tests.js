@@ -1,9 +1,11 @@
 'use strict';
 
+console.log('Tests:');
+
 const assert = require('assert').strict;
 
 {
-  const fn = require('./functions.js');
+  const fn = require('../functions.js');
 
   const leagues = {
     SA: 'Serie A',
