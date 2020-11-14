@@ -29,6 +29,4 @@ function CheckLeague(leagues, text, command) {
   return league;
 }
 
-console.log(TopScorers('PL'));
-
 module.exports = { TopScorers, Table, CheckLeague };

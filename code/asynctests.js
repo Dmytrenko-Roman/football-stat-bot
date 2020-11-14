@@ -1,21 +1,11 @@
 'use strict';
 
-const assert = require('assert').strict;
-
 {
   const fn = require('./functions.js');
 
-  const leagues = {
-    SA: 'Serie A',
-    PL: 'EPL',
-    BL1: 'Bundesliga',
-    FL1: 'Ligue 1',
-    CL: 'Champions league',
-    PD: 'La Liga'
-  };
-
   const tests = [
-    ['PLs', 'Top scorers (async): PL'],
+    ['PL1', 'Top scorers (async): PL'],
+    ['PD', 'Top scorers (async): PD']
   ];
 
   const obj = {
@@ -28,16 +18,16 @@ const assert = require('assert').strict;
     const [par, name] = test;
     obj.t++;
     try {
-      console.log(name);
       fn.TopScorers(par).then(json => {
+        console.log(name);
         const info = json.scorers;
         let text = '';
         for (let i = 0; i < info.length; i++) {
           text += `${i + 1}. ${info[i].player.name}: ${info[i].numberOfGoals}\n`;
         }
         console.log(text);
+        obj.p++;
       });
-      obj.p++;
     } catch (err) {
       console.log(err);
       obj.f++;
