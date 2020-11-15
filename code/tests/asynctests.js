@@ -8,10 +8,14 @@ console.log('Async tests:');
   const tests = [
     ['PL', 'Top scorers (async): PL'],
     ['PD', 'Top scorers (async): PD'],
+    ['BL1', 'Top scorers (async): BL1'],
+    ['FL1', 'Top scorers (async): FL1'],
+    ['CL', 'Top scorers (async): CL'],
+    ['SA', 'Top scorers (async): SA'],
   ];
 
   const AsyncConsoleLog = () => {
-    setTimeout(() => console.log(`Result: ${obj.t} tests, ${obj.p} passed, ${obj.f} failed`), 500);
+    setTimeout(() => console.log(`Result: ${obj.t} tests, ${obj.p} passed, ${obj.f} failed`), 1000);
   }
 
   const obj = {
@@ -22,9 +26,9 @@ console.log('Async tests:');
 
   for (const test of tests) {
     const [par, name] = test;
-    obj.t++;
       fn.TopScorers(par).then(json => {
         try {
+          obj.t++;
           const info = json.scorers;
           let text = '';
           for (let i = 0; i < info.length; i++) {
