@@ -4,7 +4,7 @@
   "description": "",
   "main": "./code/code.js",
   "scripts": {
-    "test": "node ./code/tests/asynctests.js && node ./code/tests/tests.js",
+    "test": "node ./code/tests/tests.js",
     "lint": "eslint ./code/*.js && eslint ./code/tests/*.js",
     "fix": "eslint ./code/*.js --fix"
   },
