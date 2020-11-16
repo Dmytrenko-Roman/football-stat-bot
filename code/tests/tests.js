@@ -27,7 +27,7 @@ const assert = require('assert').strict;
     [leagues, '/topscorers Serie A', '/topscorers', 'SA', 'Topscorers: Serie A'],
     [leagues, '/topscorers Ligue 1', '/topscorers', 'FL1', 'Topscorers: Ligue 1'],
     [leagues, '/topscorers Champions league', '/topscorers', 'CL', 'Topscorers: Champions league'],
-    [leagues, '/topscorers EPL', '/topscorers', 'PL', 'Topscorers: EPL'],
+    [leagues, '/topscorers EPL', '/topscorers', 'PL1', 'Topscorers: EPL'],
   ];
 
   const obj = {
