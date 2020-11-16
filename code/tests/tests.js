@@ -17,7 +17,7 @@ const assert = require('assert').strict;
   };
 
   const tests = [
-    [leagues, '/positions La Liga', '/positions', 'PD1', 'Positions: La Liga'],
+    [leagues, '/positions La Liga', '/positions', 'PD', 'Positions: La Liga'],
     [leagues, '/positions Bundesliga', '/positions', 'BL11', 'Positions: Bundesliga'],
     [leagues, '/positions Serie A', '/positions', 'SA1', 'Positions: Serie A'],
     [leagues, '/positions Ligue 1', '/positions', 'FL11', 'Positions: Ligue 1'],
@@ -44,8 +44,8 @@ const assert = require('assert').strict;
       assert.strictEqual(result, expected, `Error in test "${name}"`);
       obj.p++;
     } catch (err) {
-      console.log(err);
       obj.f++;
+      throw Error(err);
     }
   }
   console.log(`Result: ${obj.t} tests, ${obj.p} passed, ${obj.f} failed`);
