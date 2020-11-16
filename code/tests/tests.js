@@ -18,16 +18,16 @@ const assert = require('assert').strict;
 
   const tests = [
     [leagues, '/positions La Liga', '/positions', 'PD', 'Positions: La Liga'],
-    [leagues, '/positions Bundesliga', '/positions', 'BL11', 'Positions: Bundesliga'],
-    [leagues, '/positions Serie A', '/positions', 'SA1', 'Positions: Serie A'],
-    [leagues, '/positions Ligue 1', '/positions', 'FL11', 'Positions: Ligue 1'],
-    [leagues, '/positions EPL', '/positions', 'PL1', 'Positions: EPL'],
-    [leagues, '/topscorers La Liga', '/topscorers', 'PD1', 'Topscorers: La Liga'],
-    [leagues, '/topscorers Bundesliga', '/topscorers', 'BL11', 'Topscorers: Bundesliga'],
-    [leagues, '/topscorers Serie A', '/topscorers', 'SA1', 'Topscorers: Serie A'],
-    [leagues, '/topscorers Ligue 1', '/topscorers', 'FL11', 'Topscorers: Ligue 1'],
-    [leagues, '/topscorers Champions league', '/topscorers', 'CL1', 'Topscorers: Champions league'],
-    [leagues, '/topscorers EPL', '/topscorers', 'PL1', 'Topscorers: EPL'],
+    [leagues, '/positions Bundesliga', '/positions', 'BL1', 'Positions: Bundesliga'],
+    [leagues, '/positions Serie A', '/positions', 'SA', 'Positions: Serie A'],
+    [leagues, '/positions Ligue 1', '/positions', 'FL1', 'Positions: Ligue 1'],
+    [leagues, '/positions EPL', '/positions', 'PL', 'Positions: EPL'],
+    [leagues, '/topscorers La Liga', '/topscorers', 'PD', 'Topscorers: La Liga'],
+    [leagues, '/topscorers Bundesliga', '/topscorers', 'BL1', 'Topscorers: Bundesliga'],
+    [leagues, '/topscorers Serie A', '/topscorers', 'SA', 'Topscorers: Serie A'],
+    [leagues, '/topscorers Ligue 1', '/topscorers', 'FL1', 'Topscorers: Ligue 1'],
+    [leagues, '/topscorers Champions league', '/topscorers', 'CL', 'Topscorers: Champions league'],
+    [leagues, '/topscorers EPL', '/topscorers', 'PL', 'Topscorers: EPL'],
   ];
 
   const obj = {
@@ -35,6 +35,8 @@ const assert = require('assert').strict;
     f: 0,
     t: 0,
   };
+
+  //let text = '';
 
   for (const test of tests) {
     const [par1, par2, par3, expected, name] = test;
@@ -45,8 +47,14 @@ const assert = require('assert').strict;
       obj.p++;
     } catch (err) {
       obj.f++;
-      throw Error(err);
+      //text += err + '\n';
+      console.log(err);
     }
   }
+
+  /*if (obj.f) {
+    throw Error(text);
+  }*/
+
   console.log(`Result: ${obj.t} tests, ${obj.p} passed, ${obj.f} failed`);
 }
