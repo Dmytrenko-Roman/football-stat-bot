@@ -51,8 +51,8 @@ console.log('Async tests:');
       });
   }
 
-  /*for (const test2 of testsTable) {
-    const [par, name] = test2;
+  for (const test of testsTable) {
+    const [par, name] = test;
       fn.Table(par).then(json => {
         try {
           obj.t++;
@@ -68,7 +68,7 @@ console.log('Async tests:');
           obj.f++;
         }
       });
-  } */
+  }
 
   AsyncConsoleLog();
 }
