@@ -87,7 +87,7 @@ bot.on('message', msg => {
           const score2 = matches[k].score.fullTime.awayTeam;
           const date = matches[k].utcDate.substr(11, 5); 
           if (score1 !== null) text += `${compName}:\n${homeTeam} ${score1}:${score2} ${awayTeam}`;
-          text += console.log(`${compName}:\n${homeTeam} : ${awayTeam} | ${date} (Greenwich)`);
+          text += `${compName}:\n${homeTeam} : ${awayTeam} | ${date} (Greenwich)`;
           bot.sendMessage(chatId, text);
         }
       });
