@@ -10,7 +10,16 @@ fetch('https://api.football-data.org//v2/matches', {
   .then(response => response.json())
   .then(json => {
     const matches = json.matches;
-    for (let k = 0; k < matches; k++) {
-      console.log(`${matches[k].competition.name}:\n${matches[k].score.homeTeam} ${matches[k].score.fullTime.homeTeam}:${matches[k].score.fullTime.awayTeam} ${matches[k].awayTeam}`);
+    console.log(matches[0]);
+    for (let k = 0; k < matches.length; k++) {
+      const compName = matches[k].competition.name;
+      const homeTeam = matches[k].homeTeam.name;
+      const awayTeam = matches[k].awayTeam.name;
+      const score1 = matches[k].score.fullTime.homeTeam;
+      const score2 = matches[k].score.fullTime.awayTeam;
+      const date = matches[k].utcDate.substr(11, 5);
+      
+      if (score1 !== null) console.log(`${compName}:\n${homeTeam} ${score1}:${score2} ${awayTeam}`);
+      console.log(`${compName}:\n${homeTeam} : ${awayTeam} | ${date} (Greenwich)`);
     }
   });

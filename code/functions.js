@@ -20,8 +20,17 @@ async function Table(league) {
     .then(response => response.json());
 }
 
+async function Matches() {
+  return fetch('https://api.football-data.org/v2/matches', {
+    headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
+    dataType: 'json',
+    type: 'GET',
+  })
+    .then(response => response.json());
+}
+
 function CheckLeague(leagues, text, command) {
-  let league;
+  let league = '';
   const t = text.substr(command.length + 1);
   for (const k in leagues) {
     if (leagues[k] === t) league = `${k}`;
@@ -29,4 +38,4 @@ function CheckLeague(leagues, text, command) {
   return league;
 }
 
-module.exports = { TopScorers, Table, CheckLeague };
+module.exports = { TopScorers, Table, Matches, CheckLeague };
