@@ -18,7 +18,7 @@ fetch('https://api.football-data.org//v2/matches', {
       const score1 = matches[k].score.fullTime.homeTeam;
       const score2 = matches[k].score.fullTime.awayTeam;
       const date = matches[k].utcDate.substr(11, 5);
-      
+
       if (score1 !== null) console.log(`${compName}:\n${homeTeam} ${score1}:${score2} ${awayTeam}`);
       console.log(`${compName}:\n${homeTeam} : ${awayTeam} | ${date} (Greenwich)`);
     }
