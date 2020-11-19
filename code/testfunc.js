@@ -12,4 +12,4 @@ async function Func() {
   return json;
 }
 
-console.log(Func().then(json => console.log(json)));
+console.log(Func().then(json => console.log(json.matches.length)));
