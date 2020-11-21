@@ -75,11 +75,11 @@ bot.on('message', msg => {
 
   if (msgt.substr(0, commands.mat.length) === commands.mat) {
     const leaguesM = {
-      'Ligue 1': 'Ligue 1:\n',
-      'Premier League': 'EPL:\n',
-      'Bundesliga': 'Bundesliga:\n',
-      'Serie A': 'Serie A:\n',
-      'Primera Division': 'La Liga:\n',
+      L1: ['Ligue 1', 'Ligue 1:\n'],
+      PL: ['Premier League', 'EPL:\n'],
+      BL: ['Bundesliga', 'Bundesliga:\n'],
+      SA: ['Serie A', 'Serie A:\n'],
+      LL: ['Primera Division', 'La Liga:\n'],
     }
     funcs.Matches()
       .then(json => {
@@ -92,14 +92,13 @@ bot.on('message', msg => {
           const score2 = matches[k].score.fullTime.awayTeam;
           const date = matches[k].utcDate.substr(11, 5);
           for (let k in leaguesM) {
-            if (compName === k) {
-              if (score1 !== null) leaguesM.k += `${homeTeam} ${score1}:${score2} ${awayTeam}\n`;
-              leaguesM.k += `${homeTeam} : ${awayTeam} | ${date} (Greenwich)\n`;
+            if (compName === leaguesM.k[0]) {
+              if (score1 !== null) leaguesM.k[1] += `${homeTeam} ${score1}:${score2} ${awayTeam}\n`;
+              leaguesM.k[1] += `${homeTeam} : ${awayTeam} | ${date} (Greenwich)\n`;
             }
           }
         }
-        let text = '';
-        text = leaguesM[0] + leaguesM[1] + leaguesM[2] + leaguesM[3] + leaguesM[4];
+        const text = leaguesM.L1[1] + leaguesM.PL[1] + leaguesM.BL[1] + leaguesM.SA[1] + leaguesM.LL[1];
         bot.sendMessage(chatId, text);
       });
   }
