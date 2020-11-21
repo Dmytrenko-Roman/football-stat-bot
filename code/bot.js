@@ -74,7 +74,7 @@ bot.on('message', msg => {
   // Matches:
 
   if (msgt.substr(0, commands.mat.length) === commands.mat) {
-    const leaguesM = {
+    let leaguesM = {
       L1: ['Ligue 1', 'Ligue 1:\n'],
       PL: ['Premier League', 'EPL:\n'],
       BL: ['Bundesliga', 'Bundesliga:\n'],
