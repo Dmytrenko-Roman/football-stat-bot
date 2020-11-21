@@ -74,7 +74,18 @@ bot.on('message', msg => {
   // Matches:
 
   if (msgt.substr(0, commands.mat.length) === commands.mat) {
-    let text = '';
+    let text1 = 'Ligue 1:\n';
+    let text2 = 'EPL:\n';
+    let text3 = 'Bundesliga:\n';
+    let text4 = 'Serie A:\n';
+    let text5 = 'La Liga:\n';
+    const leaguesM = {
+      'Ligue 1': text1,
+      'Premier League': text2,
+      'Bundesliga': text3,
+      'Serie A': text4,
+      'Primera Division': text5,
+    }
     funcs.Matches()
       .then(json => {
         const matches = json.matches;
@@ -86,9 +97,14 @@ bot.on('message', msg => {
           const score1 = matches[k].score.fullTime.homeTeam;
           const score2 = matches[k].score.fullTime.awayTeam;
           const date = matches[k].utcDate.substr(11, 5);
-          if (score1 !== null) text += `${compName}:\n${homeTeam} ${score1}:${score2} ${awayTeam}\n`;
-          text += `${compName}:\n${homeTeam} : ${awayTeam} | ${date} (Greenwich)\n`;
+          for (let k in leaguesM) {
+            if (compName === k) {
+              if (score1 !== null) leaguesM.k += `${homeTeam} ${score1}:${score2} ${awayTeam}\n`;
+              leaguesM.k += `${homeTeam} : ${awayTeam} | ${date} (Greenwich)\n`;
+            }
+          }
         }
+        const text = text1 + text2 + text3 + text4 + text5;
         bot.sendMessage(chatId, text);
       });
   }
