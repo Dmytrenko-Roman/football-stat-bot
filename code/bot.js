@@ -84,7 +84,6 @@ bot.on('message', msg => {
     funcs.Matches()
       .then(json => {
         const matches = json.matches;
-        console.log(matches[0]);
         for (let k = 0; k < matches.length; k++) {
           const compName = matches[k].competition.name;
           const homeTeam = matches[k].homeTeam.name;
@@ -99,7 +98,8 @@ bot.on('message', msg => {
             }
           }
         }
-        const text = leaguesM[0] + leaguesM[1] + leaguesM[2] + leaguesM[3] + leaguesM[4];
+        let text = '';
+        text = leaguesM[0] + leaguesM[1] + leaguesM[2] + leaguesM[3] + leaguesM[4];
         bot.sendMessage(chatId, text);
       });
   }
