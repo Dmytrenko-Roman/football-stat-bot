@@ -91,7 +91,7 @@ bot.on('message', msg => {
           const score1 = matches[k].score.fullTime.homeTeam;
           const score2 = matches[k].score.fullTime.awayTeam;
           const date = matches[k].utcDate.substr(11, 5);
-          for (let k in leaguesM) {
+          for (let k = 0; k < leaguesM.length; k++) {
             if (compName === leaguesM.k[0]) {
               if (score1 !== null) leaguesM.k[1] += `${homeTeam} ${score1}:${score2} ${awayTeam}\n`;
               leaguesM.k[1] += `${homeTeam} : ${awayTeam} | ${date} (Greenwich)\n`;
