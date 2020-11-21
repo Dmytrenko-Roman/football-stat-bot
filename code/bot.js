@@ -74,17 +74,12 @@ bot.on('message', msg => {
   // Matches:
 
   if (msgt.substr(0, commands.mat.length) === commands.mat) {
-    let text1 = 'Ligue 1:\n';
-    let text2 = 'EPL:\n';
-    let text3 = 'Bundesliga:\n';
-    let text4 = 'Serie A:\n';
-    let text5 = 'La Liga:\n';
     const leaguesM = {
-      'Ligue 1': text1,
-      'Premier League': text2,
-      'Bundesliga': text3,
-      'Serie A': text4,
-      'Primera Division': text5,
+      'Ligue 1': 'Ligue 1:\n',
+      'Premier League': 'EPL:\n',
+      'Bundesliga': 'Bundesliga:\n',
+      'Serie A': 'Serie A:\n',
+      'Primera Division': 'La Liga:\n',
     }
     funcs.Matches()
       .then(json => {
@@ -104,7 +99,7 @@ bot.on('message', msg => {
             }
           }
         }
-        const text = text1 + text2 + text3 + text4 + text5;
+        const text = leaguesM[0] + leaguesM[1] + leaguesM[2] + leaguesM[3] + leaguesM[4];
         bot.sendMessage(chatId, text);
       });
   }
