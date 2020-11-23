@@ -35,6 +35,14 @@ const leagues = {
   PD: 'La Liga'
 };
 
+const leaguesM = {
+  L1: ['Ligue 1', 'Ligue 1:\n'],
+  PL: ['Premier League', 'EPL:\n'],
+  BL: ['Bundesliga', 'Bundesliga:\n'],
+  SA: ['Serie A', 'Serie A:\n'],
+  LL: ['Primera Division', 'La Liga:\n'],
+};
+
 // Bot functionality:
 
 bot.on('message', msg => {
@@ -74,13 +82,6 @@ bot.on('message', msg => {
   // Matches:
 
   if (msgt.substr(0, commands.mat.length) === commands.mat) {
-    const leaguesM = {
-      L1: ['Ligue 1', 'Ligue 1:\n'],
-      PL: ['Premier League', 'EPL:\n'],
-      BL: ['Bundesliga', 'Bundesliga:\n'],
-      SA: ['Serie A', 'Serie A:\n'],
-      LL: ['Primera Division', 'La Liga:\n'],
-    };
     funcs.Matches()
       .then(json => {
         const matches = json.matches;
@@ -91,10 +92,10 @@ bot.on('message', msg => {
           const score1 = matches[k].score.fullTime.homeTeam;
           const score2 = matches[k].score.fullTime.awayTeam;
           const date = matches[k].utcDate.substr(11, 5);
-          for (let k = 0; k < leaguesM.length; k++) {
-            if (compName === leaguesM.k[0]) {
-              if (score1 !== null) leaguesM.k[1] += `${homeTeam} ${score1}:${score2} ${awayTeam}\n`;
-              leaguesM.k[1] += `${homeTeam} : ${awayTeam} | ${date} (Greenwich)\n`;
+          for (let key in leaguesM) {
+            if (compName === leaguesM[key][0]) {
+              if (score1 !== null) leaguesM[key][1] += `${homeTeam} ${score1}:${score2} ${awayTeam}\n`;
+              leaguesM[key][1] += `${homeTeam} : ${awayTeam} | ${date} (Greenwich)\n`;
             }
           }
         }
