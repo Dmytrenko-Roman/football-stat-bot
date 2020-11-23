@@ -74,13 +74,13 @@ bot.on('message', msg => {
   // Matches:
 
   if (msgt.substr(0, commands.mat.length) === commands.mat) {
-    let leaguesM = {
+    const leaguesM = {
       L1: ['Ligue 1', 'Ligue 1:\n'],
       PL: ['Premier League', 'EPL:\n'],
       BL: ['Bundesliga', 'Bundesliga:\n'],
       SA: ['Serie A', 'Serie A:\n'],
       LL: ['Primera Division', 'La Liga:\n'],
-    }
+    };
     funcs.Matches()
       .then(json => {
         const matches = json.matches;
