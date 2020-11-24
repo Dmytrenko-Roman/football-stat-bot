@@ -35,7 +35,7 @@ const leagues = {
   PD: 'La Liga'
 };
 
-const leaguesM = {
+const leagueMatches = {
   L1: ['Ligue 1', 'Ligue 1:\n'],
   PL: ['Premier League', 'EPL:\n'],
   BL: ['Bundesliga', 'Bundesliga:\n'],
@@ -92,14 +92,14 @@ bot.on('message', msg => {
           const score1 = matches[k].score.fullTime.homeTeam;
           const score2 = matches[k].score.fullTime.awayTeam;
           const date = matches[k].utcDate.substr(11, 5);
-          for (let key in leaguesM) {
-            if (compName === leaguesM[key][0]) {
-              if (score1 !== null) leaguesM[key][1] += `${homeTeam} ${score1}:${score2} ${awayTeam}\n`;
-              leaguesM[key][1] += `${homeTeam} : ${awayTeam} | ${date} (Greenwich)\n`;
+          for (let key in leagueMatches) {
+            if (compName === leagueMatches[key][0]) {
+              if (score1 !== null) leagueMatches[key][1] += `${homeTeam} ${score1}:${score2} ${awayTeam}\n`;
+              leagueMatches[key][1] += `${homeTeam} : ${awayTeam} | ${date} (Greenwich)\n`;
             }
           }
         }
-        const text = leaguesM.L1[1] + leaguesM.PL[1] + leaguesM.BL[1] + leaguesM.SA[1] + leaguesM.LL[1];
+        const text = leagueMatches.L1[1] + leagueMatches.PL[1] + leagueMatches.BL[1] + leagueMatches.SA[1] + leagueMatches.LL[1];
         bot.sendMessage(chatId, text);
       });
   }
