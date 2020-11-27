@@ -2,7 +2,7 @@
 
 const fetch = require('node-fetch');
 
-fetch('https://api.football-data.org/v2/players/44/matches', {
+fetch('https://api.football-data.org/v2/competitons/BL1/scorers', {
   headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
   dataType: 'json',
   type: 'GET',

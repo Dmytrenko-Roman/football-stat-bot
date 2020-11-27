@@ -86,16 +86,18 @@ bot.on('message', msg => {
       .then(json => {
         const matches = json.matches;
         for (let k = 0; k < matches.length; k++) {
-          const compName = matches[k].competition.name;
-          const homeTeam = matches[k].homeTeam.name;
-          const awayTeam = matches[k].awayTeam.name;
-          const score1 = matches[k].score.fullTime.homeTeam;
-          const score2 = matches[k].score.fullTime.awayTeam;
-          const date = matches[k].utcDate.substr(11, 5);
+          const match = {
+            compName: matches[k].competition.name,
+            homeTeam: matches[k].homeTeam.name,
+            awayTeam: matches[k].awayTeam.name,
+            score1: matches[k].score.fullTime.homeTeam,
+            score2: matches[k].score.fullTime.awayTeam,
+            date: matches[k].utcDate.substr(11, 5),
+          }
           for (const key in leagueMatches) {
             if (compName === leagueMatches[key][0]) {
-              if (score1 !== null) leagueMatches[key][1] += `${homeTeam} ${score1}:${score2} ${awayTeam}\n`;
-              leagueMatches[key][1] += `${homeTeam} : ${awayTeam} | ${date} (Greenwich)\n`;
+              if (score1 !== null) leagueMatches[key][1] += `${match.homeTeam} ${match.score1}:${match.score2} ${match.awayTeam}\n`;
+              leagueMatches[key][1] += `${match.homeTeam} : ${match.awayTeam} | ${match.date} (Greenwich)\n`;
             }
           }
         }
