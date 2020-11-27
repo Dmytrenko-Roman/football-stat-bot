@@ -93,10 +93,10 @@ bot.on('message', msg => {
             score1: matches[k].score.fullTime.homeTeam,
             score2: matches[k].score.fullTime.awayTeam,
             date: matches[k].utcDate.substr(11, 5),
-          }
+          };
           for (const key in leagueMatches) {
-            if (compName === leagueMatches[key][0]) {
-              if (score1 !== null) leagueMatches[key][1] += `${match.homeTeam} ${match.score1}:${match.score2} ${match.awayTeam}\n`;
+            if (match.compName === leagueMatches[key][0]) {
+              if (match.score1 !== null) leagueMatches[key][1] += `${match.homeTeam} ${match.score1}:${match.score2} ${match.awayTeam}\n`;
               leagueMatches[key][1] += `${match.homeTeam} : ${match.awayTeam} | ${match.date} (Greenwich)\n`;
             }
           }
