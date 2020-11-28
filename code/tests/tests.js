@@ -36,8 +36,6 @@ const assert = require('assert').strict;
     t: 0,
   };
 
-  //let text = '';
-
   for (const test of tests) {
     const [par1, par2, par3, expected, name] = test;
     const result = fn.CheckLeague(par1, par2, par3);
@@ -47,14 +45,8 @@ const assert = require('assert').strict;
       obj.p++;
     } catch (err) {
       obj.f++;
-      //text += err + '\n';
       console.log(err);
     }
   }
-
-  /*if (obj.f) {
-    throw Error(text);
-  }*/
-
   console.log(`Result: ${obj.t} tests, ${obj.p} passed, ${obj.f} failed`);
 }
