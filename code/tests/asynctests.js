@@ -3,11 +3,6 @@
 console.log('Async tests:');
 
 const fn = require('../functions.js')
-const asyncLog = (passed, failed, tests) => {
-  setTimeout(() => {
-    console.log(`Result: ${tests} tests, ${passed} passsed, ${failed} failed.`)
-  }, 1000)
-}
 const params = ['BL1', 'SA', 'PL', 'FL1', 'PD', 'CL'];
 
 const tests = {
@@ -43,4 +38,6 @@ for (let i = 0; i < params.length; i++) {
   });
 }
 
-asyncLog();
+setTimeout(() => {
+  console.log(`Result: ${tests.t} tests, ${tests.p} passed, ${tests.f} failed`)
+  }, 2000);
