@@ -98,7 +98,7 @@ bot.on('message', msg => {
             if (match.compName === leagueMatches[key][0]) {
               if (match.score1 !== null) leagueMatches[key][1] += `${match.homeTeam} ${match.score1}:${match.score2} ${match.awayTeam}\n`;
               leagueMatches[key][1] += `${match.homeTeam} : ${match.awayTeam} | ${match.date} (Greenwich)\n`;
-            }
+            } else leagueMatches[key][1] += 'There is no matches here today';
           }
         }
         const text = leagueMatches.L1[1] + leagueMatches.PL[1] + leagueMatches.BL[1] + leagueMatches.SA[1] + leagueMatches.LL[1];
