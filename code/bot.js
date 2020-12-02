@@ -83,30 +83,26 @@ bot.on('message', msg => {
   // Matches:
 
   if (msgt.substr(0, commands.mat.length) === commands.mat) {
-    let text;
     funcs.Matches()
       .then(json => {
         const matches = json.matches;
-        if (matches.length !== undefined) {
-          for (let k = 0; k < matches.length; k++) {
-            const match = {
-              compName: matches[k].competition.name,
-              homeTeam: matches[k].homeTeam.name,
-              awayTeam: matches[k].awayTeam.name,
-              score1: matches[k].score.fullTime.homeTeam,
-              score2: matches[k].score.fullTime.awayTeam,
-              date: matches[k].utcDate.substr(11, 5),
-            };
-            for (const key in leagueMatches) {
-              if (match.compName === leagueMatches[key][0]) {
-                if (match.score1 !== null) leagueMatches[key][1] += `${match.homeTeam} ${match.score1}:${match.score2} ${match.awayTeam}\n`;
-                leagueMatches[key][1] += `${match.homeTeam} : ${match.awayTeam} | ${match.date} (Greenwich)\n`;
-              }
+        for (let k = 0; k < matches.length; k++) {
+          const match = {
+            compName: matches[k].competition.name,
+            homeTeam: matches[k].homeTeam.name,
+            awayTeam: matches[k].awayTeam.name,
+            score1: matches[k].score.fullTime.homeTeam,
+            score2: matches[k].score.fullTime.awayTeam,
+            date: matches[k].utcDate.substr(11, 5),
+          };
+          for (const key in leagueMatches) {
+            if (match.compName === leagueMatches[key][0]) {
+              if (match.score1 !== null) leagueMatches[key][1] += `${match.homeTeam} ${match.score1}:${match.score2} ${match.awayTeam}\n`;
+              leagueMatches[key][1] += `${match.homeTeam} : ${match.awayTeam} | ${match.date} (Greenwich)\n`;
             }
           }
-          text = leagueMatches.L1[1] + leagueMatches.PL[1] + leagueMatches.BL[1] + leagueMatches.SA[1] + leagueMatches.LL[1];
         }
-        text = 'There is no matches today';
+        const text = leagueMatches.L1[1] + leagueMatches.PL[1] + leagueMatches.BL[1] + leagueMatches.SA[1] + leagueMatches.LL[1] + leagueMatches.CL[1];
         bot.sendMessage(chatId, text);
       });
   }
