@@ -41,6 +41,7 @@ const leagueMatches = {
   BL: ['Bundesliga', 'Bundesliga:\n'],
   SA: ['Serie A', 'Serie A:\n'],
   LL: ['Primera Division', 'La Liga:\n'],
+  CL: ['UEFA Champions League', 'Champions League:\n']
 };
 
 // Bot functionality:
