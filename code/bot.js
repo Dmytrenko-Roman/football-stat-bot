@@ -8,8 +8,6 @@ const funcs = require('./functions.js');
 const token = process.env.TOKEN;
 const url = process.env.APP_URL || 'https://playerstatbot.herokuapp.com/';
 
-//const bot = new TelegramBot(token, { polling: true });
-
 const bot = new TelegramBot(token, {
   webHook: {
     port: process.env.PORT
