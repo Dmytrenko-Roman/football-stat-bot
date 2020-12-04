@@ -95,12 +95,10 @@ bot.on('message', msg => {
             score2: matches[k].score.fullTime.awayTeam,
             date: matches[k].utcDate.substr(11, 5),
           };
-          for (const key in leagueMatches) {
-            if (match.compName === league) {
-              if (match.score1 !== null) text += `${match.homeTeam} ${match.score1}:${match.score2} ${match.awayTeam}\n`;
-              text += `${match.homeTeam} : ${match.awayTeam} | ${match.date} (Greenwich)\n`;
-            }
-          }
+          if (match.compName === league) {
+            if (match.score1 !== null) text = `${match.homeTeam} ${match.score1}:${match.score2} ${match.awayTeam}\n`;
+              text = `${match.homeTeam} : ${match.awayTeam} | ${match.date} (Greenwich)\n`;
+          } else text = 'No matches today';
         }
         bot.sendMessage(chatId, text);
       });
