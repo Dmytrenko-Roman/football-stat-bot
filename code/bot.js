@@ -33,14 +33,7 @@ const leagues = {
   PD: 'La Liga'
 };
 
-const leagueMatches = {
-  L1: 'Ligue 1',
-  PL: 'Premier League',
-  BL: 'Bundesliga',
-  SA: 'Serie A',
-  LL: 'Primera Division',
-  CL: 'UEFA Champions League'
-};
+const leagueMatches = [ 'Ligue 1', 'Premier League', 'Bundesliga', 'Serie A', 'Primera Division', 'UEFA Champions League'];
 
 // Bot functionality:
 
@@ -81,7 +74,7 @@ bot.on('message', msg => {
   // Matches:
 
   if (msgt.substr(0, commands.mat.length) === commands.mat) {
-    const league = funcs.CheckLeague(leagues, msgt, commands.mat);
+    const league = msgt.substr(commands.mat.length + 1, 0);
     let text = '';
     funcs.Matches()
       .then(json => {
@@ -97,7 +90,7 @@ bot.on('message', msg => {
           };
           if (match.compName === league) {
             if (match.score1 !== null) text = `${match.homeTeam} ${match.score1}:${match.score2} ${match.awayTeam}\n`;
-              text = `${match.homeTeam} : ${match.awayTeam} | ${match.date} (Greenwich)\n`;
+            text = `${match.homeTeam} : ${match.awayTeam} | ${match.date} (Greenwich)\n`;
           } else text = 'No matches today';
         }
         bot.sendMessage(chatId, text);
