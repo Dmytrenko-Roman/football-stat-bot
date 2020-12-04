@@ -81,6 +81,7 @@ bot.on('message', msg => {
   // Matches:
 
   if (msgt.substr(0, commands.mat.length) === commands.mat) {
+    const league = funcs.CheckLeague(leagues, msgt, commands.mat);
     funcs.Matches()
       .then(json => {
         const matches = json.matches;
