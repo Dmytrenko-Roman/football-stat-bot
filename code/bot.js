@@ -74,7 +74,7 @@ bot.on('message', msg => {
   // Matches:
 
   if (msgt.substr(0, commands.mat.length) === commands.mat) {
-    const league = msgt.substr(commands.mat.length + 1, 0);
+    const league = msgt.substr(commands.mat.length + 1, msgt.length);
     let text = '';
     funcs.Matches()
       .then(json => {
