@@ -33,8 +33,6 @@ const leagues = {
   PD: 'La Liga'
 };
 
-const leagueMatches = [ 'Ligue 1', 'Premier League', 'Bundesliga', 'Serie A', 'Primera Division', 'UEFA Champions League'];
-
 // Bot functionality:
 
 bot.on('message', msg => {
@@ -93,7 +91,7 @@ bot.on('message', msg => {
             text = `${match.homeTeam} : ${match.awayTeam} | ${match.date} (Greenwich)\n`;
           } else text = 'No matches today';
         }
-        console.log(league);
+        console.log(`-${league}-`);
         bot.sendMessage(chatId, text);
       });
   }
