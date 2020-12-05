@@ -87,8 +87,8 @@ bot.on('message', msg => {
             date: matches[k].utcDate.substr(11, 5),
           };
           if (match.compName === league) {
-            if (match.score1 !== null) text = `${match.homeTeam} ${match.score1}:${match.score2} ${match.awayTeam}\n`;
-            text = `${match.homeTeam} : ${match.awayTeam} | ${match.date} (Greenwich)\n`;
+            if (match.score1 !== null) text += `${match.homeTeam} ${match.score1}:${match.score2} ${match.awayTeam}\n`;
+            text += `${match.homeTeam} : ${match.awayTeam} | ${match.date} (Greenwich)\n`;
           } //else text = 'No matches today';
         }
         console.log(`-${league}-`);
