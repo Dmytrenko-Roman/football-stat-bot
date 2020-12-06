@@ -88,7 +88,7 @@ bot.on('message', msg => {
           };
           if (match.compName === league) {
             if (match.score1 !== null) text += `${match.homeTeam} ${match.score1}:${match.score2} ${match.awayTeam}\n`;
-            text += `${match.homeTeam} : ${match.awayTeam} | ${match.date} (Greenwich)\n`;
+            else text += `${match.homeTeam} : ${match.awayTeam} | ${match.date} (Greenwich)\n`;
           }
         }
         console.log(`-${league}-`);
