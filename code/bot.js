@@ -97,7 +97,6 @@ bot.on('message', msg => {
             }
           }
         }
-        console.log(`-${league}-`);
         bot.sendMessage(chatId, text);
       });
   }
