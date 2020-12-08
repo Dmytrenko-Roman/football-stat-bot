@@ -38,10 +38,13 @@ const leagues = {
 bot.on('message', msg => {
   const chatId = msg.chat.id;
   const msgt = msg.text;
+  const cutTop = msgt.substr(0, commands.top.length);
+  const cutPos = msgt.substr(0, commands.pos.length);
+  const cutMat = msgt.substr(0, commands.mat.length);
 
   // Top scorers:
 
-  if (msgt.substr(0, commands.top.length) === commands.top) {
+  if (cutTop === commands.top) {
     const league = funcs.CheckLeague(leagues, msgt, commands.top);
     let text = '';
     funcs.TopScorers(league)
@@ -56,7 +59,7 @@ bot.on('message', msg => {
 
   // Teams positions:
 
-  if (msgt.substr(0, commands.pos.length) === commands.pos) {
+  if (cutPos === commands.pos) {
     const league = funcs.CheckLeague(leagues, msgt, commands.pos);
     let text = '';
     funcs.Table(league)
@@ -71,7 +74,7 @@ bot.on('message', msg => {
 
   // Matches:
 
-  if (msgt.substr(0, commands.mat.length) === commands.mat) {
+  if (cutMat === commands.mat) {
     const league = msgt.substr(commands.mat.length + 1, msgt.length);
     let text = '';
     funcs.Matches()
