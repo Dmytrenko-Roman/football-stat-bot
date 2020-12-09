@@ -44,7 +44,7 @@ bot.on('message', msg => {
 
   // Top scorers:
 
-  if (cutTop === commands.top) {
+  if (msgt.substr(0, commands.top.length) === commands.top) {
     const league = funcs.CheckLeague(leagues, msgt, commands.top);
     let text = '';
     funcs.TopScorers(league)
@@ -59,7 +59,7 @@ bot.on('message', msg => {
 
   // Teams positions:
 
-  if (cutPos === commands.pos) {
+  if (msgt.substr(0, commands.pos.length) === commands.pos) {
     const league = funcs.CheckLeague(leagues, msgt, commands.pos);
     let text = '';
     funcs.Table(league)
@@ -74,7 +74,7 @@ bot.on('message', msg => {
 
   // Matches:
 
-  if (cutMat === commands.mat) {
+  if (msgt.substr(0, commands.mat.length) === commands.mat) {
     const league = msgt.substr(commands.mat.length + 1, msgt.length);
     let text = '';
     funcs.Matches()
