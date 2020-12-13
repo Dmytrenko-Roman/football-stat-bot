@@ -1,15 +1,9 @@
 'use strict';
 
-const fetch = require('node-fetch');
+const Time = text => {
+  const cut = text.substr(0, 2);
+  const cutend = text.substr(2, 4);
+  return {cut, cutend};
+}
 
-fetch('https://api.football-data.org/v2/competitions', {
-  headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
-  dataType: 'json',
-  type: 'GET',
-})
-  .then(response => response.json())
-  .then(json => {
-    console.log(json.competitions[0].currentSeason);
-  });
-
-
+console.log(Time('20:30'));
