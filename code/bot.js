@@ -87,13 +87,13 @@ bot.on('message', msg => {
             awayTeam: matches[k].awayTeam.name,
             score1: matches[k].score.fullTime.homeTeam,
             score2: matches[k].score.fullTime.awayTeam,
-            date: matches[k].utcDate.substr(11, 5),
+            date: funcs.Time(matches[k].utcDate.substr(11, 5)),
           };
           if (match.compName === league) {
             if (match.score1 !== null) {
               text += `${match.homeTeam} ${match.score1}:${match.score2} ${match.awayTeam}\n`;
             } else {
-              text += `${match.homeTeam} : ${match.awayTeam} | ${match.date} (Greenwich)\n`;
+              text += `${match.homeTeam} : ${match.awayTeam} | ${match.date}\n`;
             }
           }
         }

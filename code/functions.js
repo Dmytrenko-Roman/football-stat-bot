@@ -38,4 +38,11 @@ function CheckLeague(leagues, text, command) {
   return league;
 }
 
-module.exports = { TopScorers, Table, Matches, CheckLeague };
+const Time = text => {
+  const cut = text.substr(0, 2);
+  const cutend = text.substr(2, 4);
+  const newtime = (+cut + 2).toString() + cutend;
+  return newtime;
+}
+
+module.exports = { TopScorers, Table, Matches, CheckLeague, Time };
