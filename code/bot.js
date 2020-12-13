@@ -38,9 +38,6 @@ const leagues = {
 bot.on('message', msg => {
   const chatId = msg.chat.id;
   const msgt = msg.text;
-  const cutTop = msgt.substr(0, commands.top.length);
-  const cutPos = msgt.substr(0, commands.pos.length);
-  const cutMat = msgt.substr(0, commands.mat.length);
 
   // Top scorers:
 
