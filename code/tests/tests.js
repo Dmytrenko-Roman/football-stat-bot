@@ -48,5 +48,35 @@ const assert = require('assert').strict;
       console.log(err);
     }
   }
+  console.log('- CheckLeague -');
+  console.log(`Result: ${obj.t} tests, ${obj.p} passed, ${obj.f} failed`);
+}
+
+{
+  const fn = require('../functions.js');
+
+  const tests = [
+    ['20:30', '22:30', 'Time: 20:30 to 22:30'],
+  ];
+
+  const obj = {
+    p: 0,
+    f: 0,
+    t: 0,
+  };
+
+  for (const test of tests) {
+    const [par, expected, name] = test;
+    const result = fn.Time(par);
+    obj.t++;
+    try {
+      assert.strictEqual(result, expected, `Error in test "${name}"`);
+      obj.p++;
+    } catch (err) {
+      obj.f++;
+      console.log(err);
+    }
+  }
+  console.log('- Time -');
   console.log(`Result: ${obj.t} tests, ${obj.p} passed, ${obj.f} failed`);
 }
