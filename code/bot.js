@@ -102,6 +102,7 @@ bot.on('message', msg => {
   // Information:
 
   if (msgt.substr(0, commands.info.length) = commands.info) {
-    const text = '';
+    const text = `Hello, I'm a football statistics bot!\nI will help you find out information regarding the statistics of players and teams from the top 5 championships.`;
+    bot.sendMessage(chatId, text);
   }
 });
