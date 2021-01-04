@@ -22,6 +22,7 @@ const commands = {
   top: '/topscorers',
   pos: '/positions',
   mat: '/matches',
+  info: '/info',
 };
 
 const leagues = {
@@ -96,5 +97,11 @@ bot.on('message', msg => {
         }
         bot.sendMessage(chatId, text);
       });
+  }
+
+  // Information:
+
+  if (msgt.substr(0, commands.info.length) = commands.info) {
+    const text = '';
   }
 });
