@@ -102,7 +102,7 @@ bot.on('message', msg => {
   // Information:
 
   if (msgt.substr(0, commands.info.length) === commands.info) {
-    const text = `Hello, I'm a football statistics bot!\nI will help you find out information regarding the statistics of players and teams from the top 5 championships.`;
+    const text = `Hello, I'm a football statistics bot!\nI will help you find out information regarding the statistics of players and teams from the top 5 championships.\nCommands:\n/topscorers - shows the top 10 scorers from the specified league.\n/positions - shows the league standings.\n/matches - shows matches of the specified league.\n`;
     bot.sendMessage(chatId, text);
   }
 });
