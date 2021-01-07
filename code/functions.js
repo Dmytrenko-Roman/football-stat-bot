@@ -43,6 +43,6 @@ const Time = text => {
   const cutend = text.substr(2, 4);
   const newtime = (+cut + 2).toString() + cutend;
   return newtime;
-}
+};
 
 module.exports = { TopScorers, Table, Matches, CheckLeague, Time };
