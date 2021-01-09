@@ -2,7 +2,7 @@
 
 const fetch = require('node-fetch');
 
-async function TopScorers(league) {
+const TopScorers = league => {
   return fetch(`https://api.football-data.org/v2/competitions/${league}/scorers`, {
     headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
     dataType: 'json',
@@ -11,7 +11,7 @@ async function TopScorers(league) {
     .then(response => response.json());
 }
 
-async function Table(league) {
+const Table = league => {
   return fetch(`https://api.football-data.org/v2/competitions/${league}/standings`, {
     headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
     dataType: 'json',
@@ -20,7 +20,7 @@ async function Table(league) {
     .then(response => response.json());
 }
 
-async function Matches() {
+const Matches = () => {
   return fetch('https://api.football-data.org/v2/matches', {
     headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
     dataType: 'json',
@@ -29,7 +29,7 @@ async function Matches() {
     .then(response => response.json());
 }
 
-function CheckLeague(leagues, text, command) {
+const CheckLeague = (leagues, text, command) => {
   let league = '';
   const t = text.substr(command.length + 1);
   for (const k in leagues) {
