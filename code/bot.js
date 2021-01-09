@@ -38,8 +38,9 @@ const leagues = {
 bot.on('message', msg => {
   const chatId = msg.chat.id;
   const msgt = msg.text;
+  const cutTop = msgt.substr(0, commands.top.length);
   // Top scorers:
-  if (msgt.substr(0, commands.top.length) === commands.top) {
+  if (cutTop === commands.top) {
     const league = funcs.CheckLeague(leagues, msgt, commands.top);
     let txt = '';
     funcs.TopScorers(league)
