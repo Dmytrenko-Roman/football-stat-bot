@@ -59,7 +59,15 @@ bot.on('message', msg => {
       .then(json => {
         const tablejson = json.standings[0].table;
         for (let k = 0; k < tablejson.length; k++) {
-          text += `${tablejson[k].position}. ${tablejson[k].team.name} |W:${tablejson[k].won}|D:${tablejson[k].draw}|L:${tablejson[k].lost}|P:${tablejson[k].points}|\n`;
+          const team = {
+            position: tablejson[k].position,
+            name: tablejson[k].team.name,
+            won: tablejson[k].won,
+            draw: tablejson[k].draw,
+            lost: tablejson[k].lost,
+            points: tablejson[k].points,
+          }
+          text += `${team.position}. ${team.name} |W:${team.won}|D:${team.draw}|L:${team.lost}|P:${team.points}|\n`;
         }
         bot.sendMessage(chatId, text);
       });
