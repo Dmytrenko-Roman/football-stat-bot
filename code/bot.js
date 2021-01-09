@@ -38,9 +38,8 @@ const leagues = {
 bot.on('message', msg => {
   const chatId = msg.chat.id;
   const msgt = msg.text;
-  const cutTop = msgt.substr(0, commands.top.length);
   // Top scorers:
-  if (cutTop === commands.top) {
+  if (msgt.substr(0, commands.top.length) === commands.top) {
     const league = funcs.CheckLeague(leagues, msgt, commands.top);
     let txt = '';
     funcs.TopScorers(league)
@@ -68,9 +67,9 @@ bot.on('message', msg => {
             lost: tablejson[k].lost,
             points: tablejson[k].points,
           };
-          txt += team.position + '. |W:' + team.won +
-          '|D:' + team.draw + '|L:' + team.lost + '|P:' +
-          team.points + '|\n';
+          txt += team.position + '. ' + team.name +
+          '|W:' + team.won + '|D:' + team.draw +
+          '|L:' + team.lost + '|P:' + team.points + '|\n';
         }
         bot.sendMessage(chatId, txt);
       });
