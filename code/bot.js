@@ -92,7 +92,7 @@ bot.on('message', msg => {
           };
           if (match.compName === league) {
             if (match.score1 !== null) {
-              txt += `${match.homeTeam} ${match.score1}` + 
+              txt += `${match.homeTeam} ${match.score1}` +
               `:${match.score2} ${match.awayTeam}\n`;
             } else {
               txt += `${match.homeTeam} : ${match.awayTeam} | ${match.date}\n`;
