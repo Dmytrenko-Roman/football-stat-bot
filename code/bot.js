@@ -1,23 +1,22 @@
 'use strict';
 
-// Bot settings:
-
-const TelegramBot = require('node-telegram-bot-api');
+//Functions:
 const funcs = require('./functions.js');
 
+// Bot settings:
+const TelegramBot = require('node-telegram-bot-api');
 const token = process.env.TOKEN;
 const url = process.env.APP_URL || 'https://playerstatbot.herokuapp.com/';
 
+// Bot:
 const bot = new TelegramBot(token, {
   webHook: {
     port: process.env.PORT
   }
 });
-
 bot.setWebHook(`${url}/bot${token}`);
 
 // Commands:
-
 const commands = {
   top: '/topscorers',
   pos: '/positions',
@@ -25,6 +24,7 @@ const commands = {
   info: '/info',
 };
 
+// Leagues:
 const leagues = {
   SA: 'Serie A',
   PL: 'EPL',
@@ -35,13 +35,10 @@ const leagues = {
 };
 
 // Bot functionality:
-
 bot.on('message', msg => {
   const chatId = msg.chat.id;
   const msgt = msg.text;
-
   // Top scorers:
-
   if (msgt.substr(0, commands.top.length) === commands.top) {
     const league = funcs.CheckLeague(leagues, msgt, commands.top);
     let text = '';
@@ -54,9 +51,7 @@ bot.on('message', msg => {
         bot.sendMessage(chatId, text);
       });
   }
-
   // Teams positions:
-
   if (msgt.substr(0, commands.pos.length) === commands.pos) {
     const league = funcs.CheckLeague(leagues, msgt, commands.pos);
     let text = '';
@@ -69,9 +64,7 @@ bot.on('message', msg => {
         bot.sendMessage(chatId, text);
       });
   }
-
   // Matches:
-
   if (msgt.substr(0, commands.mat.length) === commands.mat) {
     const league = msgt.substr(commands.mat.length + 1, msgt.length);
     let text = '';
@@ -98,9 +91,7 @@ bot.on('message', msg => {
         bot.sendMessage(chatId, text);
       });
   }
-
   // Information:
-
   if (msgt.substr(0, commands.info.length) === commands.info) {
     const text = 'Hello, Im a football statistics bot!\nI will help you find out information regarding the statistics of players and teams from the top 5 championships.\nCommands:\n/topscorers - shows the top 10 scorers from the specified league.\n/positions - shows the league standings.\n/matches - shows matches of the specified league.\n';
     bot.sendMessage(chatId, text);
