@@ -41,20 +41,20 @@ bot.on('message', msg => {
   // Top scorers:
   if (msgt.substr(0, commands.top.length) === commands.top) {
     const league = funcs.CheckLeague(leagues, msgt, commands.top);
-    let text = '';
+    let txt = '';
     funcs.TopScorers(league)
       .then(json => {
         const info = json.scorers;
         for (let i = 0; i < info.length; i++) {
-          text += `${i + 1}. ${info[i].player.name}: ${info[i].numberOfGoals}\n`;
+          txt += `${i + 1}. ${info[i].player.name}: ${info[i].numberOfGoals}\n`;
         }
-        bot.sendMessage(chatId, text);
+        bot.sendMessage(chatId, txt);
       });
   }
   // Teams positions:
   if (msgt.substr(0, commands.pos.length) === commands.pos) {
     const league = funcs.CheckLeague(leagues, msgt, commands.pos);
-    let text = '';
+    let txt = '';
     funcs.Table(league)
       .then(json => {
         const tablejson = json.standings[0].table;
@@ -66,16 +66,18 @@ bot.on('message', msg => {
             draw: tablejson[k].draw,
             lost: tablejson[k].lost,
             points: tablejson[k].points,
-          }
-          text += `${team.position}. ${team.name} |W:${team.won}|D:${team.draw}|L:${team.lost}|P:${team.points}|\n`;
+          };
+          txt += team.position + '. |W:' + team.won +
+          '|D:' + team.draw + '|L:' + team.lost + '|P:' +
+          team.points + '|\n';
         }
-        bot.sendMessage(chatId, text);
+        bot.sendMessage(chatId, txt);
       });
   }
   // Matches:
   if (msgt.substr(0, commands.mat.length) === commands.mat) {
     const league = msgt.substr(commands.mat.length + 1, msgt.length);
-    let text = '';
+    let txt = '';
     funcs.Matches()
       .then(json => {
         const matches = json.matches;
@@ -90,18 +92,18 @@ bot.on('message', msg => {
           };
           if (match.compName === league) {
             if (match.score1 !== null) {
-              text += `${match.homeTeam} ${match.score1}:${match.score2} ${match.awayTeam}\n`;
+              txt += `${match.homeTeam} ${match.score1}:${match.score2} ${match.awayTeam}\n`;
             } else {
-              text += `${match.homeTeam} : ${match.awayTeam} | ${match.date}\n`;
+              txt += `${match.homeTeam} : ${match.awayTeam} | ${match.date}\n`;
             }
           }
         }
-        bot.sendMessage(chatId, text);
+        bot.sendMessage(chatId, txt);
       });
   }
   // Information:
   if (msgt.substr(0, commands.info.length) === commands.info) {
-    const text = 'Hello, Im a football statistics bot!\nI will help you find out information regarding the statistics of players and teams from the top 5 championships.\nCommands:\n/topscorers - shows the top 10 scorers from the specified league.\n/positions - shows the league standings.\n/matches - shows matches of the specified league.\n';
-    bot.sendMessage(chatId, text);
+    const txt = 'Hello, Im a football statistics bot!\nI will help you find out information regarding the statistics of players and teams from the top 5 championships.\nCommands:\n/topscorers - shows the top 10 scorers from the specified league.\n/positions - shows the league standings.\n/matches - shows matches of the specified league.\n';
+    bot.sendMessage(chatId, txt);
   }
 });
