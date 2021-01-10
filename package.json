@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node ./code/tests/tests.js && node ./code/tests/asynctests.js",
     "lint": "eslint ./code/*.js && eslint ./code/tests/*.js",
-    "fix": "eslint ./code/*.js --fix"
+    "fix": "eslint ./code/*.js && eslint ./code/tests/*.js --fix"
   },
   "repository": {
     "type": "git",
