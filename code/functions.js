@@ -2,14 +2,14 @@
 
 const fetch = require('node-fetch');
 
-const TopScorers = league => fetch(`https://api.football-data.org/v2/competitions/${league}/scorers`, {
+const TopScorers = (league) => fetch(`https://api.football-data.org/v2/competitions/${league}/scorers`, {
   headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
   dataType: 'json',
   type: 'GET',
 })
   .then(response => response.json());
 
-const Table = league => fetch(`https://api.football-data.org/v2/competitions/${league}/standings`, {
+const Table = (league) => fetch(`https://api.football-data.org/v2/competitions/${league}/standings`, {
   headers: { 'X-Auth-Token': '831ab788816b4517bdcf099d8cd99312' },
   dataType: 'json',
   type: 'GET',
@@ -32,7 +32,7 @@ const CheckLeague = (leagues, text, command) => {
   return league;
 };
 
-const Time = text => {
+const Time = (text) => {
   const cut = text.substr(0, 2);
   const cutend = text.substr(2, 4);
   const newtime = (+cut + 2).toString() + cutend;
