@@ -58,3 +58,5 @@ Contributions are what make the open source community such an amazing place to b
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
+<p align="center"><img src="https://github.com/Dmytrenko-Roman/pictures-gifs/blob/main/gifs/arthas.ForAllREADMEs.gif" /></p>
+
